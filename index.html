@@ -9,69 +9,148 @@
 <script defer id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script defer type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';mermaid.initialize({ startOnLoad: true });</script>
 <style>
+      /* ── Base ── */
+      *, *::before, *::after { box-sizing: border-box; }
+
       body {
-        max-width: 600px;
-      }
-      .canvas {
-        margin-left: -20%;
-      }
-      .ask-more-box {
-        display: none;
-      }
-      iframe {
-        display: none;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 24px 60px;
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 18px;
+        line-height: 1.75;
+        color: #222;
+        background: #fff;
       }
 
+      /* ── Typography ── */
+      h1, h2, h3, h4, h5 {
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.3;
+      }
+      h2 { margin-top: 2.5rem; }
+      h4 { margin-top: 1.8rem; }
+      p  { margin: 1rem 0; }
+
+      /* ── Images ── */
+      img {
+        max-width: 100% !important;
+        height: auto !important;
+        display: block;
+        margin: 16px auto;
+        border-radius: 8px;
+      }
+
+      /* ── Iframe (YouTube) ── */
+      iframe {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: 450px;
+        border: none;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+
+      /* ── Charts ── */
+      .canvas { margin-left: 0; }
+
+      /* ── Table ── */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 16px;
+      }
+      th, td {
+        padding: 10px 14px;
+        border: 1px solid #ddd;
+        vertical-align: top;
+      }
+      th { background: #f5f5f5; font-weight: bold; }
+
+      /* ── FAQ ── */
       .faq-question {
-        color: black;
-        margin: 10px;
-        border-radius: 10px;
-        padding: 10px 5px 10px 15px;
-        font-size: 18px;
+        color: #111;
+        margin: 10px 0 0;
+        border-radius: 10px 10px 0 0;
+        padding: 12px 15px;
+        font-size: 17px;
+        font-weight: bold;
         border: 2px solid #388278;
+        background: #f0f8f7;
       }
       .faq-answer {
-        color: black;
-        margin: 10px;
-        margin-bottom: 20px;
+        color: #333;
+        margin: 0 0 20px;
+        border-radius: 0 0 10px 10px;
+        padding: 20px 24px;
+        border: 2px solid rgba(56,130,120,0.25);
+        border-top: none;
+        font-size: 16px;
+      }
+
+      /* ── Article title block ── */
+      .article-title-background {
+        background-size: cover;
+        background-position: center;
+        padding: 60px 40px 40px;
+        border-radius: 12px;
+        margin-bottom: 32px;
+      }
+      .article-title-container h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+      .article-title-container h3 { font-size: 1.1rem; font-weight: normal; margin-top: 0; }
+
+      /* ── Table of contents ── */
+      .table-of-contents {
+        background: rgba(255,255,255,0.1);
         border-radius: 10px;
-        padding :30px;
-        border: 2px solid rgba(56,130,120,0.2)
+        padding: 20px 30px;
+        margin-top: 24px;
       }
-      /* Add RTL support styles */
-      .rtl-support {
-        direction: rtl !important;
-        text-align: right !important;
-      }
+      .toc-list { padding-left: 20px; margin: 0; }
+      .toc-link { color: #ffe066; text-decoration: none; }
+      .toc-link:hover { text-decoration: underline; }
+      .toc-number { margin-right: 8px; }
 
-      img {
-        max-width: 50% !important;
-      }
+      /* ── Source box ── */
+      .source-box { cursor: pointer; }
+      .favicon-container { display: inline-flex; gap: 4px; }
+      .favicon { width: 16px; height: 16px; border-radius: 3px; }
 
-      .rtl-support pre,
-      .rtl-support code {
-        direction: ltr !important;
-        text-align: left !important;
-      }
+      /* ── Search results ── */
+      .search-result { margin-bottom: 20px; }
+      .search-result-description { color: #1a0dab; }
+      .search-result-description:hover { text-decoration: underline; }
 
-      /* RTL list styling */
-      .rtl-support li {
-        padding-right: 1.5em;
-        padding-left: 0;
-      }
+      /* ── Mermaid diagram ── */
+      .mermaid { overflow-x: auto; }
 
-      .rtl-support li:before {
-        right: 0;
-        left: auto;
-      }
+      /* ── Misc ── */
+      .ask-more-box { display: none; }
+      hr { border: none; border-top: 1px solid #eee; margin: 32px 0; }
 
       .article-date {
         display: block;
         text-align: center;
         color: #aaa;
         margin: 64px auto;
+        font-size: 14px;
       }
 
+      /* ── RTL support ── */
+      .rtl-support { direction: rtl !important; text-align: right !important; }
+      .rtl-support pre, .rtl-support code { direction: ltr !important; text-align: left !important; }
+      .rtl-support li { padding-right: 1.5em; padding-left: 0; }
+      .rtl-support li:before { right: 0; left: auto; }
+
+      /* ── Responsive ── */
+      @media (max-width: 600px) {
+        body { font-size: 16px; padding: 0 14px 40px; }
+        .article-title-background { padding: 30px 20px 24px; }
+        .article-title-container h1 { font-size: 1.4rem; }
+        iframe { height: 260px; }
+      }
 </style>
 </head>
 <body>
@@ -839,7 +918,7 @@ if (isRTL) {
   document.body.classList.add('rtl-support');
   document.body.setAttribute('dir', 'rtl');
 }
-document.addEventListener("DOMContentLoaded", (event) => {window.print()});
+// Auto-print removed for browser viewing
 </script>
 </body>
 </html>
